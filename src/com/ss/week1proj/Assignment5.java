@@ -21,20 +21,22 @@ public class Assignment5 {
 			for (int i = 0; i < list.size(); i++) {
 				
 				Integer element = list.get(i);
-				Integer multiplier = 0;
+				Integer multiplier = 1;
 				
-				do
-				{
+				while (i + 1 < list.size()) {
+					
+					if (list.get(i + 1) != element)
+						break;
+					
 					multiplier++;
 					i++;
 				}
-				while (i < list.size() && list.get(i) == element);
 				
 				trimmedList.add(element * multiplier);
-				
 			}
 			
 			list = trimmedList;
+			
 		}
 		
 		if (runningSum > expectedSum)
@@ -43,17 +45,16 @@ public class Assignment5 {
 		if (runningSum == expectedSum)
 			return true;
 		
-		boolean feasible = false;
-		
 		for (int i = 0; i < list.size(); i++) {
 			
-			List<Integer> subList = list;
+			List<Integer> subList = new ArrayList<>(list);
 			subList.remove(i);
 			
-			feasible |= groupSumClump(runningSum + list.get(i), subList, expectedSum);
+			if (groupSumClump(runningSum + list.get(i), subList, expectedSum))
+				return true;
 		}
 		
-		return feasible;
+		return false;
 	}
 	
 	
