@@ -3,9 +3,13 @@
  */
 package com.ss.week1proj;
 
+import static org.junit.Assert.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.junit.Test;
 
 /** Rightmost Digit method
  * @author chris
@@ -13,6 +17,17 @@ import java.util.stream.Collectors;
  */
 public class Assignment2 {
 
+	
+	@Test
+	public void testRightDigit() {
+		List<Integer> muhList = Arrays.asList(1, 22, 93);
+		muhList = rightDigit(muhList);
+	
+		assertEquals(muhList.get(0).intValue(), 1);
+		assertEquals(muhList.get(1).intValue(), 2);
+		assertEquals(muhList.get(2).intValue(), 3);
+	}
+	
 	/** Return a list of the rightmost digits of each nonnegative integer.
 	 * 
 	 * @param list

@@ -3,8 +3,12 @@
  */
 package com.ss.week1proj;
 
+import static org.junit.Assert.*;
+
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
+import org.junit.Test;
 
 //Used for lambda implementation
 interface PerformOperation {
@@ -17,6 +21,13 @@ interface PerformOperation {
  */
 public class Assignment1 {
 
+	@Test
+	public void testOperations () {
+		assertEquals(isOdd().check(42), false);
+		assertEquals(isPrime().check(37), true);
+		assertEquals(isPalindrome().check(123454321), true);
+	}
+	
 	public static boolean checker (PerformOperation p, int num) {
 		return p.check(num);
 	}
